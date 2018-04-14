@@ -10,51 +10,35 @@
   <div class="app" id="app">
     <app-header></app-header>
     <div class="content">
-      <!-- <div class="map" id="map"></div> -->
-      <map name="map" id="map" class="map"></map>
-      <div class="info"></div>
+      <app-map id="app-map" class="map"></app-map>
+      <div class="right-part">
+        <info class="info"></info>
+        <event class="event"></event>
+        <review class="review"></review>
+      </div>
     </div>
   </div>
 </template>
 <script>
 import appHeader from './components/header.vue';
-import map from './components/map.vue';
+import appMap from './components/map.vue';
+import info from './components/info.vue';
+import event from './components/createEvent.vue';
+import review from './components/createReview.vue';
 
 export default {
   components: {
     appHeader,
-    map
-  }
+    appMap,
+    info,
+    event,
+    review
+  },
 }
 </script>
 
 <style lang="scss">
 
-.app {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-}
-
-.content {
-  display: flex;
-  flex: 1;
-}
-
-// .map {
-//   background-color: white;
-// }
-
-.info {
-  background-color: grey;
-  padding: 5%;
-}
-
-.map, .info {
-  width: 50%;
-  // flex: 1;
-}
 
 li,
 ul {
@@ -98,4 +82,45 @@ input {
   border: 0;
 }
 
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+}
+
+// .map {
+//   background-color: white;
+// }
+
+
+
+.map, .right-part {
+  width: 50%;
+  // flex: 1;
+}
+
+.right-part {
+  // background-color: grey;
+  position: relative;
+  overflow: hidden;
+
+  border-left: 1px solid rgba(0, 0, 0, .33);
+}
+
+.info, .review, .event {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.review, .event {
+  left: 100%;
+}
 </style>
